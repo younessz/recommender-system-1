@@ -35,8 +35,8 @@ df = pd.get_dummies(df, columns=['products'], drop_first=False)
 #  allowing us to flatten the data (1 row per transaction)
 df = df.groupby('ids')[df.columns.drop('ids')].sum()
 #############################################################################
-#drop unneeded variables (transaction id)
-df= df.reset_index(drop=True)
+# drop unneeded variables (transaction id)
+df = df.reset_index(drop=True)
 #############################################################################
 # save the processed data
 df.to_parquet('Data/Processed_data/processed_basket_data.parquet',
