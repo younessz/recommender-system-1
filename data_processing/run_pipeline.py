@@ -29,7 +29,9 @@ df = pd.DataFrame.from_dict(
 df = df.drop_duplicates(ignore_index=True)
 #############################################################################
 # one hot encode the products
-df = pd.get_dummies(df, columns=['products'], drop_first=False)
+df = pd.get_dummies(df, columns=['products'], drop_first=False,
+                    # removing the prefix 'products_' for more clarity
+                    prefix='', prefix_sep='')
 #############################################################################
 # for each transaction id computing the sum per column (certain product),
 #  allowing us to flatten the data (1 row per transaction)
